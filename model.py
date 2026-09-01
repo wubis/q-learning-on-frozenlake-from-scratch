@@ -61,8 +61,13 @@ def decay_epsilon(epsilon, decay_rate, min_epsilon):
     # rises first and then decays later
     return max(min_epsilon, epsilon * decay_rate)
 
-# Step 8 - td_target (not yet solved)
-# TODO: implement
+# Step 8 - td_target
+def td_target(reward, gamma, q_table, next_state, done):
+    # computes bootstrap target, zeroing the bootstrap when done.
+    # conceptually, what I got now + what I expect to get later
+    if done:
+        return reward
+    return reward + gamma * max_q_value(q_table, next_state)
 
 # Step 9 - td_error (not yet solved)
 # TODO: implement
