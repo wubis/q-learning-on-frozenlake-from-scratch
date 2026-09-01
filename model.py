@@ -52,9 +52,13 @@ import numpy as np
 def epsilon_greedy_action(q_table, state, epsilon, action_space, rng):
     """Return an epsilon-greedy action for the given state."""
     # with prob epsilon explore via action_space, else take greedy action
-    if should_explore(epsilon, rng) == True:
+    if should_explore(epsilon, rng):
         return sample_random_action(action_space)
-    return greedy_action(q_table, state)
+
+    q_values = q_table[state]
+    best_actions = np.flatnonzero(q_values == np.max(q_values))
+
+    return int(rng.choice(best_actions))
 
 # Step 7 - decay_epsilon
 def decay_epsilon(epsilon, decay_rate, min_epsilon):
