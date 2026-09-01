@@ -149,7 +149,7 @@ def extract_greedy_policy(q_table):
     # returns a 1D int64 array mapping each state to its best (argmax) action.
     policy = []
     for state in range(len(q_table)):
-        policy.append(max_q_value(q_table, state))
+        policy.append(np.argmax(q_table[state]))
     return np.array(policy, dtype=np.int64)
 
 # Step 15 - run_greedy_episode (not yet solved)
