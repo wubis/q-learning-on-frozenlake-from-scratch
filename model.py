@@ -7,8 +7,6 @@ Assembled from your step-by-step solutions.
 import numpy as np
 
 # Step 1 - init_q_table
-import numpy as np
-
 def init_q_table(num_states, num_actions):
     """Return a zero-initialized Q-table of shape (num_states, num_actions)."""
     # builds a 2D float64 numpy array of zeros sized by states and actions.
@@ -16,24 +14,18 @@ def init_q_table(num_states, num_actions):
     return np.zeros((num_states, num_actions))
 
 # Step 2 - max_q_value
-import numpy as np
-
 def max_q_value(q_table, state):
     """Return the maximum Q value across all actions for the given state."""
     # indexes the row for `state` and return its maximum value
     return max(q_table[state])
 
 # Step 3 - greedy_action
-import numpy as np
-
 def greedy_action(q_table, state):
     """Return the action index with the highest Q value at the given state."""
     # returns argmax over the action axis for this state's Q values
     return int(np.argmax(q_table[state]))
 
 # Step 4 - sample_random_action
-import numpy as np
-
 def sample_random_action(action_space):
     # draws a uniformly random action from the given Gymnasium action space
     return int(action_space.sample())
@@ -47,8 +39,6 @@ def should_explore(epsilon, rng):
     return False
 
 # Step 6 - epsilon_greedy_action
-import numpy as np
-
 def epsilon_greedy_action(q_table, state, epsilon, action_space, rng):
     """Return an epsilon-greedy action for the given state."""
     # with prob epsilon explore via action_space, else take greedy action
@@ -123,8 +113,6 @@ def run_training_episode(env, q_table, epsilon, alpha, gamma, rng, max_steps=200
     return total_reward
 
 # Step 13 - train_q_learning
-import numpy as np
-
 def train_q_learning(env, num_episodes, alpha=0.8, gamma=0.95, epsilon_start=1.0, epsilon_min=0.01, epsilon_decay=0.99, seed=0, max_steps=200):
     # trains a Q-learning agent for num_episodes; return (q_table, returns)
 
