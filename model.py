@@ -40,7 +40,7 @@ def sample_random_action(action_space):
 
 # Step 5 - should_explore
 def should_explore(epsilon, rng):
-    """Return True with probability epsilon using the provided numpy Generator."""
+    """Returns True with probability epsilon"""
     # draws a uniform sample from rng and compare it to epsilon
     if rng.random() < epsilon:
         return True
