@@ -107,14 +107,16 @@ def interaction_step(env, q_table, state, epsilon, alpha, gamma, rng):
 def run_training_episode(env, q_table, epsilon, alpha, gamma, rng, max_steps=200):
     # resets env, then repeatedly call interaction_step until done or max_steps, returning total reward.
     state, info = env.reset()
-    steps = 0
-    while steps < 200:
+    total_reward = 0.0
+
+    for _ in range(max_steps):
         state, reward, done = interaction_step(env, q_table, state, epsilon, alpha, gamma, rng)
+        total_reward += reward
+        
         if done:
             break
-        steps += 1
 
-    return reward
+    return total_reward
 
 # Step 13 - train_q_learning
 import numpy as np
